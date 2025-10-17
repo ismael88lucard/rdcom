@@ -1,0 +1,731 @@
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+
+/* ===== NAVBAR AJUSTADA ===== */
+.navbar-home {
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  padding: 0; /* ajustado para no engrosar la navbar */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* altura total de la navbar */
+}
+
+/* Contenedor principal */
+.navbar-home .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 0 40px;
+  height: 100%; /* ocupa toda la navbar */
+}
+
+/* Logo */
+.navbar-home .logo {
+  display: flex;
+  align-items: center;
+  height: 100%;       /* ocupa toda la altura de la navbar */
+  max-height: 120px;  /* límite máximo para no sobresalir */
+  padding: 0;
+}
+
+.navbar-home .logo img {
+  height: 100%;       /* usa toda la altura disponible */
+  width: auto;        /* mantiene proporciones */
+  display: block;
+  margin: auto;
+}
+
+/* Menú principal */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #4a97cae5;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: medium;
+}
+
+/* 🔽 Ícono hamburguesa */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: #4a97cae5;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar-home {
+    height: 70px; /* navbar más pequeña en móvil */
+  }
+
+  .navbar-home .container {
+    padding: 0 20px;
+    height: 100%;
+  }
+
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(249, 250, 250, 0.95);
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .menu.active {
+    max-height: 300px;
+    padding: 20px 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-home .logo {
+    max-height: 60px; /* ajusta tamaño logo en móvil */
+  }
+}
+
+
+
+/* ===== SLIDER  ===== */
+.slider {
+  position: relative;
+  width: 100vw; /* 👈 Fuerza a ocupar exactamente el ancho del viewport */
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slide {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Fondo (video o imagen) */
+.slide-bg {
+  width: 100vw; /* 👈 evita que se desborde horizontalmente */
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* Overlay de texto */
+.overlay {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  right: 10%;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  z-index: 2;
+}
+
+/* Controles */
+.controls {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.controls span {
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(0,0,0,0.4);
+  padding: 10px 15px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  pointer-events: auto;
+}
+
+.controls span:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* Evita desplazamiento lateral global */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+/* SECCIONES */
+.section-content-general {
+  padding: 80px 20px;
+  text-align: center;
+}
+.bg-light {
+  background: #f8f8f8;
+}
+
+
+/* SECCIÓN NOSOTROS MINIMALISTA */
+.section-nosotros {
+  padding: 80px 20px;
+  background: linear-gradient(120deg, #ffffff, #ffffff);
+  font-family: 'Lato', sans-serif;
+  color: #333;
+}
+
+.container-nosotros {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Breve descripción */
+.nosotros-desc {
+  flex: 1 1 50%;
+  max-width: 600px;
+    text-align: justify;
+}
+
+.nosotros-desc h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+
+}
+
+.nosotros-desc h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background-color: #4083db;
+  display: block;
+  margin-top: 8px;
+  transition: width 0.4s ease;
+}
+
+.nosotros-desc h2:hover::after {
+  width: 100px;
+}
+
+.nosotros-desc p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Misión y Visión minimalista a la derecha */
+.nosotros-info-minimal {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.nosotros-info-minimal h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #4083db;
+}
+
+.nosotros-info-minimal p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+  text-align: justify; /* <- esto justifica el texto */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container-nosotros {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .nosotros-info-minimal {
+    text-align: left;
+    flex: 1 1 100%;
+  }
+}
+
+
+/* SECCIÓN SERVICIOS */
+.section-servicios-minimal {
+  padding: 100px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Lato', sans-serif;
+}
+
+.section-servicios-minimal h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #2c3e50;
+}
+
+/* Grid de íconos */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 50px;
+  justify-items: center;
+}
+
+/* Ícono + título, sin círculo */
+.service-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.service-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.service-item h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  color: #2c3e50;
+  transition: color 0.4s ease;
+  text-align: center;
+}
+
+/* Microinteracciones animadas */
+.service-item:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.service-item:hover h3 {
+  color: #FFD700; /* dorado */
+}
+
+.service-item:hover img {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    gap: 30px;
+  }
+  .service-item img {
+    width: 60px;
+    height: 60px;
+  }
+  .section-servicios-minimal h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+
+
+
+/* === GALERÍA MODERNA MIXTA === */
+.enhanced-gallery {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.gallery-group.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Columnas horizontales */
+.gallery-column.horizontal-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+  height: 80%;
+  margin-right: 2%;
+}
+
+.gallery-item.horizontal {
+  background: #000; /* fondo negro */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2%;
+}
+
+.gallery-item.horizontal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Elemento vertical (video) */
+.gallery-item.vertical {
+  width: 35%;
+  height: 80%;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-item.vertical video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 992px) {
+  .enhanced-gallery {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .gallery-group {
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .gallery-group.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  .gallery-item.vertical {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .gallery-item.vertical video {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* ahora muestra el video completo */
+    max-height: 70vh;
+  }
+
+  .gallery-column.horizontal-images {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    gap: 10px;
+  }
+
+  .gallery-item.horizontal {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9; /* proporción moderna */
+    background: #000;
+  }
+
+  .gallery-item.horizontal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* 🎞️ SECCIÓN  texto GALERÍA */
+#galeria {
+  background-color: #fafaf8;
+  padding: 100px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Título y descripción */
+.gallery-text {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.gallery-text h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  color: #3b4a1e; /* verde oliva oscuro */
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Línea decorativa dorada debajo del título */
+.gallery-text h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #d4af37; /* dorado */
+  margin: 10px auto 0;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.gallery-text h2:hover::after {
+  width: 120px;
+}
+
+.gallery-text p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-top: 10px;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efecto sutil al hacer scroll (para complementar AOS o sin usarlo) */
+.gallery-text h2,
+.gallery-text p {
+  transition: color 0.3s ease;
+}
+
+.gallery-text h2:hover {
+  color: #d4af37;
+}
+
+.gallery-text p:hover {
+  color: #3b4a1e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .gallery-text p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+/* SECCIÓN CONTACTO ELEGANTE */
+.section-contacto {
+  background-color: #fafaf8;
+  padding: 100px 20px;
+  font-family: 'Lato', sans-serif;
+  color: #2c3e50;
+}
+
+.section-contacto h2 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #3b4a1e; /* verde oliva oscuro */
+}
+
+/* Contenedor principal */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 50px;
+  align-items: center;
+  background-color: rgba(255,255,255,0.9);
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contacto-grid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Información */
+.contacto-info p {
+  font-size: 1.1rem;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s ease;
+}
+
+.contacto-info i {
+  color: #6b8e23; /* verde oliva */
+  font-size: 1.3rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contacto-info p:hover i {
+  transform: scale(1.3);
+  color: #d4af37; /* dorado */
+}
+
+/* Mapa más pequeño y centrado */
+.contacto-mapa {
+  width: 280px;
+  justify-self: center;
+}
+
+.contacto-mapa iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .contacto-mapa {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .contacto-mapa iframe {
+    height: 220px;
+  }
+}
+
+
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-grid .social-icons {
+  display: flex;
+  gap: 15px;
+}
+.footer-grid .social-icons a {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: color 0.3s, transform 0.2s;
+}
+.footer-grid .social-icons a:hover {
+  color: #f26807;
+  transform: scale(1.1);
+}
