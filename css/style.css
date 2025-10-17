@@ -544,7 +544,7 @@ html, body {
   font-weight: 800;
   font-size: 2.8rem;
   letter-spacing: 1px;
-  color: #3b4a1e; /* verde oliva oscuro */
+  color: #182d5a; /* verde oliva oscuro */
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -556,7 +556,7 @@ html, body {
   display: block;
   width: 80px;
   height: 4px;
-  background-color: #d4af37; /* dorado */
+  background-color: #5e9cce; /* dorado */
   margin: 10px auto 0;
   border-radius: 2px;
   transition: width 0.4s ease;
